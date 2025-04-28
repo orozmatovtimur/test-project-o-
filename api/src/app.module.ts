@@ -16,10 +16,10 @@ import { Call } from './entities/calls.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'db',
       port: 5432,
       username: 'postgres',
-      password: '',
+      password: 'postgres',
       database: 'calls_o',
       entities: [User, Call],
       synchronize: true,

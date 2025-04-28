@@ -6,7 +6,11 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=calls_o
     depends_on:
       - db
 
@@ -16,13 +20,16 @@ services:
       - "80:80"
     depends_on:
       - backend
+    environment:
+      - VITE_API_URL=http://localhost/api  
 
   db:
     image: postgres:14
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: calls_o
     ports:
       - "5432:5432"
     volumes:
