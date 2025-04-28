@@ -6,6 +6,10 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { CallsModule } from './calls/calls.module';
+import { Call } from './entities/calls.entity';
 
 
 @Module({
@@ -17,10 +21,14 @@ import { DashboardModule } from './dashboard/dashboard.module';
       username: 'postgres',
       password: '',
       database: 'calls_o',
-      entities: [User],
+      entities: [User, Call],
       synchronize: true,
+      autoLoadEntities: true,
     }),
-    AuthModule, UsersModule, DashboardModule],
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', "data"), 
+    }),
+    AuthModule, UsersModule, DashboardModule, CallsModule],
   controllers: [AppController],
   providers: [AppService],
 })

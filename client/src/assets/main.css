@@ -1,4 +1,12 @@
 @import './base.css';
+@import 'primevue/resources/themes/saga-blue/theme.css';
+@import 'primevue/resources/primevue.min.css';
+@import 'primeicons/primeicons.css';
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
 #app {
   max-width: 1280px;
