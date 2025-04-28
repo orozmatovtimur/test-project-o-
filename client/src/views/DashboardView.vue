@@ -67,7 +67,7 @@ const durationByCategory = computed(() => getAverageDurationByCategory(filteredC
 const fetchCalls = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.get('http://127.0.0.1:8000/dashboard', {
+    const response = await axios.get('http://api:8000/dashboard', {
       headers: { Authorization: `Bearer ${token}` }
     });
     calls.value = response.data;

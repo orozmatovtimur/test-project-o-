@@ -141,7 +141,7 @@ const filteredUsers = computed(() => {
 
 const fetchUsers = async () => {
   try {
-    const res = await axios.get("http://localhost:8000/users");
+    const res = await axios.get("http://api:8000/users");
     users.value = res.data;
   } catch (error) {
     console.error("Ошибка при загрузке пользователей:", error);
@@ -169,7 +169,7 @@ const openEditDialog = (user) => {
 const saveUser = async () => {
   try {
     if (editingUser.value) {
-      await axios.patch(`http://localhost:8000/users/${userForm.value.id}`, {
+      await axios.patch(`http://api:8000/users/${userForm.value.id}`, {
         name: userForm.value.name,
         email: userForm.value.email,
         role: userForm.value.role,
@@ -181,7 +181,7 @@ const saveUser = async () => {
         life: 3000,
       });
     } else {
-      await axios.post("http://localhost:8000/users", userForm.value);
+      await axios.post("http://api:8000/users", userForm.value);
       toast.add({
         severity: "success",
         summary: "Успех",
@@ -203,7 +203,7 @@ const deleteUser = (user) => {
     icon: "pi pi-exclamation-triangle",
     accept: async () => {
       try {
-        await axios.delete(`http://localhost:8000/users/${user.id}`);
+        await axios.delete(`http://api:8000/users/${user.id}`);
         toast.add({
           severity: "success",
           summary: "Удалено",

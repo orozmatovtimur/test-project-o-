@@ -76,7 +76,7 @@ async function fetchCalls() {
       sortDirection: sortDirection.value,
     };
 
-    const response = await axios.get('http://127.0.0.1:8000/calls', {
+    const response = await axios.get('http://api:8000/calls', {
       headers: { Authorization: `Bearer ${token}` },
       params,
     });
