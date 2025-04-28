@@ -6,7 +6,7 @@ async function start() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: 'http://localhost:5173', 
-    credentials: true,          
+    credentials: true,
   });
   await app.listen(PORT, () => console.log('Server started at port: ', PORT));
 }

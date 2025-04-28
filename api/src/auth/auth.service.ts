@@ -17,7 +17,8 @@ export class AuthService {
   //     return result;
   //   }
   //   return null;
-  // }
+  // 
+
 
   async validateUser(email: string, pass: string) {
     const user = await this.usersService.findOneByEmail(email);
@@ -41,5 +42,6 @@ export class AuthService {
     }
     return this.login(user);
   }
+  
 
 }
